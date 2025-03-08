@@ -13,7 +13,7 @@
 <body>
     <div class="signup-background">
     <h2>Signup</h2>
-    
+    <h4>Welcome! Creat your account</h4>
     <form id="signupForm">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
