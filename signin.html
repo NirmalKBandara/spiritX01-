@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .strength {
+            height: 5px;
+            width: 100%;
+            background: lightgray;
+            margin-top: 5px;
+        }
+        .strength span {
+            display: block;
+            height: 100%;
+            width: 0;
+            transition: width 0.3s;
+        }
+        .success-message {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" id="username">
+            <div class="error" id="username-error"></div>
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="password">
+            <div class="strength"><span id="strength-bar"></span></div>
+            <div class="error" id="password-error"></div>
+        </div>
+        <div class="input-group">
+            <label>Confirm Password</label>
+            <input type="password" id="confirm-password">
+            <div class="error" id="confirm-password-error"></div>
+        </div>
+        <div class="error" id="auth-error"></div>
+        <button onclick="validateForm()">Signup</button>
+        <div class="success-message" id="success-message"></div>
+    </div>
+    <script>
+        let existingUsernames = ["user123", "johnDoe", "testUser"];
+        
+        function validateForm() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+            let valid = true;
+            
+            document.getElementById("username-error").innerText = "";
+            document.getElementById("password-error").innerText = "";
+            document.getElementById("confirm-password-error").innerText = "";
+            document.getElementById("auth-error").innerText = "";
+            
+            if (!username || username.length < 8 || existingUsernames.includes(username)) {
+                document.getElementById("username-error").innerText = "Username must be at least 8 characters and unique.";
+                valid = false;
+            }
+            if (!password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])/)) {
+                document.getElementById("password-error").innerText = "Password must contain lowercase, uppercase, and special character.";
+                valid = false;
+            }
+            if (password !== confirmPassword) {
+                document.getElementById("confirm-password-error").innerText = "Passwords do not match.";
+                valid = false;
+            }
+            if (valid) {
+                document.getElementById("success-message").innerText = "Signup successful! Redirecting...";
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            }
+        }
+        
+        document.getElementById("password").addEventListener("input", function() {
+            let password = this.value;
+            let strengthBar = document.getElementById("strength-bar");
+            let strength = 0;
+            if (password.length >= 8) strength += 1;
+            if (password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/[a-z]/)) strength += 1;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+            
+            let colors = ["red", "orange", "yellow", "green"];
+            strengthBar.style.width = (strength * 25) + "%";
+            strengthBar.style.background = colors[strength - 1] || "lightgray";
+        });
+    </script>
+</body>
+</html>
