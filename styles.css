@@ -5,13 +5,33 @@ body {
   background-color: blue;
   background-image: url('background.jpg');
 }
+
 .signup-background{
   position: fixed;
   right: 100px; ;
   text-align: center;
-  background-color:rgba(255,255,255,0.3);
-
+  background-color:rgba(56, 54, 54, 0.1);
+  padding: 20px;
 }
+h2 {
+  color: #fff;
+}
+h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  
+}
+p{
+  color: aliceblue;
+}
+input {
+  background-color:rgba(27, 22, 22); /* Change this to
+   any color */
+   border-radius: 10px;
+  color: aliceblue;
+}
+
 input::placeholder {
   color: gray;
   font-style: "Quicksand";
@@ -35,7 +55,7 @@ form {
  }
  /* styling of Input */
  .input {
-  color: #fff;
+  color:rgba(27, 22, 22)f;
   font-size: 0.9rem;
   background-color: transparent;
   width: 100%;
@@ -80,22 +100,27 @@ input {
 }
  
 button {
-  font-size: 1.4em;
+  font-size: 1.0em;
   padding: 0.6em 0.8em;
   border-radius: 0.5em;
   border: none;
-  background-color: #000;
-  color: #fff;
+  background-color: #312a2a;
+  color: #5f5757;
   cursor: pointer;
   box-shadow: 2px 2px 3px #000000b4;
+  width: 100%;
 }
 
 .container {
   position: relative;
   padding: 3px;
-  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  background: linear-gradient(90deg, #788a92, #487a65);
   border-radius: 0.9em;
   transition: all 0.4s ease;
+  width: 200px;
+  width: 50%; 
+  margin: 0 25%;
+
 }
 
 .container::before {
@@ -110,10 +135,10 @@ button {
 }
 
 .container:hover::before {
-  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  background: linear-gradient(90deg, #788a92, #487a65);
+  background: linear-gradient(90deg, #788a92, #487a65));
   filter: blur(1.2em);
 }
 .container:active::before {
   filter: blur(0.2em);
 }
-S
